@@ -1,17 +1,15 @@
 import img from '../assets/logos/header-image.svg';
-import { HStack, VStack } from '@chakra-ui/react';
+import './Nav.css';
+import { Link } from 'react-router';
 
 const Nav = () => {
     return (
-        <nav>
-            <HStack as="ul" align="center" justifyContent={'space-between'} spacing={4}
-                px={10}>
-                <img src={img} alt="Header" />
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </HStack>
+        <nav className='nav-list'>
+            <img src={img} alt="Logo" />
+            <li><Link to="/">Home</Link></li>
+            <li><a href="#about">About</a></li>
+            <li><Link to="/booking">Reservations</Link></li>
+            <li><a href="#contact">Contact</a></li>
         </nav >
     );
 }

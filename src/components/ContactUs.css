@@ -1,0 +1,37 @@
+.contact-main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+    background-color: lightgrey;
+    justify-items: center;
+}
+
+@media (max-width: 768px) {
+    .contact-main {
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        gap: 0.5rem;
+    }
+}
+
+.contact-main h3 {
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: black;
+    font-family: 'Markazi Text', serif;
+    font-weight: bold;
+}
+
+.contact-main h4 {
+    font-size: 1rem;
+    color: black;
+    font-family: 'Markazi Text', serif;
+}
+
+.contact-logo {
+    margin-top: 1rem;
+    width: 40%;
+    height: 90%;
+    margin-left: 8rem;
+}

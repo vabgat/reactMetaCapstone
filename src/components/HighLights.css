@@ -1,0 +1,44 @@
+.highlights-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    .highlights-item {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 0.5rem;
+    }
+
+    .highlights-title {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 0.5rem;
+    }
+}
+
+.highlights-title {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.highlights-title h2 {
+    font-size: 2rem;
+    color: black;
+    font-style: markazi text;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: var(--primary-color1);
+    color: black;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    margin-right: 7rem;
+}

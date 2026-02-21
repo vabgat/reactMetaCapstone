@@ -1,0 +1,49 @@
+.rating-img {
+    height: 40px;
+    width: 40px;
+}
+
+.testimonial-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 16px;
+    background-color: pink
+}
+
+.testimonial-card .customer-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.testimonial-card .customer-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.testimonial-card .customer-review {
+    font-size: 1rem;
+    color: darkblue;
+    font-style: italic;
+}
+
+.testimonial-card .rating-img {
+    margin-bottom: 1rem;
+    height: 20px;
+    width: 20px;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row;
+}
+
+.customer-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}

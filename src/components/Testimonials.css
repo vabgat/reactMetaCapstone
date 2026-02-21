@@ -1,0 +1,39 @@
+.testimonials-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 2rem;
+    margin-top: 4rem;
+    border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+    .testimonials-list {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 0.5rem;
+    }
+}
+
+
+.title {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.title h2 {
+    font-size: 2rem;
+    color: black;
+    font-family: 'Markazi Text', serif;
+}
+
+.title p {
+    font-size: 1.2rem;
+    color: black;
+    font-family: 'Markazi Text', serif;
+}
+
+.testimonials-main {
+    background-color: lightgrey;
+    padding: 2rem;
+}

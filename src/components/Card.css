@@ -1,0 +1,46 @@
+.card .card-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 8px;
+}
+
+.card-content .price {
+    font-weight: bold;
+    color: red;
+}
+
+.card-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5rem;
+    align-items: end;
+}
+
+.card-content .title {
+    font-weight: bold;
+}
+
+.description {
+    align-items: center;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.order-delivery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 2rem;
+    justify-items: center;
+}
+
+.order-delivery p {
+    font-weight: bold;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    border-radius: 16px;
+    background-color: lightgrey;
+}

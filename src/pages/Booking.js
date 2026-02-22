@@ -16,13 +16,13 @@ const Booking = () => {
     const [occasion, setOccasion] = useState('');
     const [seating, setSeating] = useState('');
 
-    const { availableTimes, dispatch, submitForm } = useContext(TimesContext);
+    const isFormValid = name && email && contact && date && time && guests && seating;
 
+    const { availableTimes, dispatch, submitForm } = useContext(TimesContext);
     const handleDateChange = (e) => {
         setDate(e.target.value);
         dispatch({ type: "UPDATE_TIMES", payload: e.target.value });
     }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const bookingData = {
@@ -66,6 +66,7 @@ const Booking = () => {
                         <div className='form-row'>
                             <label htmlFor="time">Time:</label>
                             <select id="time" name="time" value={time} onChange={(e) => setTime(e.target.value)} required>
+                                <option value="" disabled>Select a time</option>
                                 {availableTimes.map((time) => (
                                     <option key={time} value={time} >{time}</option>
                                 ))}
@@ -73,11 +74,12 @@ const Booking = () => {
                         </div>
                         <div className='form-row'>
                             <label htmlFor="guests">Number of Guests:</label>
-                            <input type="number" id="guests" name="guests" value={guests} onChange={(e) => setGuests(e.target.value)} required />
+                            <input type="number" id="guests" name="guests" value={guests} min={1} max={50} onChange={(e) => setGuests(e.target.value)} required />
                         </div>
                         <div className='form-row'>
                             <label htmlFor="occasion">Occasion:</label>
                             <select id="occasion" name="occasion" value={occasion} onChange={(e) => setOccasion(e.target.value)}>
+                                <option value="" disabled>Select an occasion</option>
                                 <option value="birthday">Birthday</option>
                                 <option value="anniversary">Anniversary</option>
                                 <option value="engagement">Engagement</option>
@@ -85,16 +87,16 @@ const Booking = () => {
                         </div>
                         <div className='radio-row'>
                             <label className='radio-label'>
-                                <input type='radio' name="seating" value="indoor" checked={seating === 'indoor'} onChange={(e) => setSeating(e.target.value)} />
+                                <input aria-label='Indoor seating' type='radio' name="seating" value="indoor" checked={seating === 'indoor'} onChange={(e) => setSeating(e.target.value)} />
                                 Indoor
                             </label>
                             <label className='radio-label'>
-                                <input type='radio' name="seating" value="outdoor" checked={seating === 'outdoor'} onChange={(e) => setSeating(e.target.value)} />
+                                <input aria-label='Outdoor seating' type='radio' name="seating" value="outdoor" checked={seating === 'outdoor'} onChange={(e) => setSeating(e.target.value)} />
                                 Outdoor
                             </label>
                         </div>
                         <div className='button-container'>
-                            <button aria-controls='submit reservation' type="submit">Confirm Reservation</button>
+                            <button disabled={!isFormValid} aria-controls='submit reservation' type="submit">Confirm Reservation</button>
                         </div>
                     </form>
                 </section>

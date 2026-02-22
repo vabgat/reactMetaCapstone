@@ -3,7 +3,7 @@ import Booking from './Booking';
 import { useReducer } from 'react';
 import { TimesContext } from '../App';
 import { BrowserRouter } from 'react-router';
-import { fetchAPI, submitAPI } from '../utils/api';
+import { fetchAPI } from '../utils/api';
 
 
 const submitForm = jest.fn();
@@ -20,6 +20,7 @@ function TimesProvider({ children }) {
         }
     };
     const initializeTimes = () => fetchAPI(new Date());
+
     const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
 
     return (
@@ -65,14 +66,36 @@ test('submits the booking form with correct data', () => {
     fireEvent.change(emailInput, { target: { value: 'john.doe@example.com' } });
     fireEvent.change(contactInput, { target: { value: '1234567890' } });
     fireEvent.change(dateInput, { target: { value: '2024-06-15' } });
-    fireEvent.change(timeSelect, { target: { value: '18:00' } });
+    const availableTimes = fetchAPI(new Date(dateInput.value));
+    fireEvent.change(timeSelect, { target: { value: availableTimes[0] } });
     fireEvent.change(guestsInput, { target: { value: '4' } });
-    fireEvent.change(occasionSelect, { target: { value: 'Birthday' } });
+    fireEvent.change(occasionSelect, { target: { value: 'birthday' } });
     fireEvent.click(seatingSelect[0]); // Select indoor seating
 
-    fireEvent.click(submitButton);
+    fireEvent.submit(submitButton);
 
     // Add assertions to check if the form submission was successful
-    expect(submitForm).toHaveBeenCalled();
+    expect(submitForm).toHaveBeenCalledWith({
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        contact: '1234567890',
+        date: '2024-06-15',
+        time: availableTimes[0],
+        guests: '4',
+        occasion: 'birthday',
+        seating: 'indoor',
+    });
     expect(seatingSelect[0]).toBeChecked();
+});
+
+test('submit button is disabled when form is incomplete', () => {
+    render(
+        <TimesProvider>
+            <BrowserRouter>
+                <Booking />
+            </BrowserRouter>
+        </TimesProvider>
+    );
+    const submitButton = screen.getByRole('button', { name: /Confirm Reservation/i });
+    expect(submitButton).toBeDisabled();
 });

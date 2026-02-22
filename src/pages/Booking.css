@@ -88,3 +88,26 @@
     margin-bottom: 2rem;
     margin-top: 1rem;
 }
+
+.button-container button:disabled {
+    background-color: rgb(160, 151, 151);
+    cursor: not-allowed;
+}
+
+.button-container button:active {
+    animation: buttonClick 0.3s;
+}
+
+@keyframes buttonClick {
+    0% {
+        background-color: #388e3c;
+    }
+
+    50% {
+        background-color: #43a047;
+    }
+
+    100% {
+        background-color: #388e3c;
+    }
+}
